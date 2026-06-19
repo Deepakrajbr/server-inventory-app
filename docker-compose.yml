@@ -1,0 +1,26 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-server
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: inventorydb
+
+    ports:
+      - "3306:3306"
+
+  app:
+    build: .
+
+    container_name: inventory-api
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - mysql
+
+    environment:
+      DATABASE_URL: mysql+pymysql://root:root123@mysql:3306/inventorydb
