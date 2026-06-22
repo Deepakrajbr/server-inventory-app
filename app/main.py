@@ -13,7 +13,7 @@ Base.metadata.create_all(bind=engine)
 @app.get("/")
 def home():
     return {
-        "message": "Server Inventory API Running"
+        "message": "Deepaks Server Inventory API Running"
     }
 
 @app.post("/servers")
